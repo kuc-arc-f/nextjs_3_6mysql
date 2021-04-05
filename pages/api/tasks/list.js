@@ -16,7 +16,8 @@ export default async function (req, res){
       ],      
 //      where: { published: true },
     })
-    items = LibPagenate.get_items(posts, 0, 100 )
+//    items = LibPagenate.get_items(posts, 0, 100 )
+    items = posts
     var ret ={
       items: items
     }   
