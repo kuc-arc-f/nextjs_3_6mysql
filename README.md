@@ -6,7 +6,7 @@
 
  date    : 2021/04/04
 
- update  :
+ update  : 2021/04/05
 
 ***
 ### Summary
@@ -35,10 +35,6 @@ DATABASE_URL = 'mysql://user123:pass123@localhost:3306/dbname'
 * Start :
 
 yarn dev
-
-* build:
-
-yarn deploy
 
 ***
 ### Related :

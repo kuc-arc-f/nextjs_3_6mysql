@@ -8,6 +8,11 @@ export default async function (req, res){
     var items = []
     //
     const posts = await prisma.task.findMany({
+      orderBy: [
+        {
+          id: 'desc',
+        },
+      ],      
 //      where: { published: true },
     })
     var ret ={
