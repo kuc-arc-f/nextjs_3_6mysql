@@ -1,7 +1,8 @@
-import prisma from '../../../libs/prisma'
+import LibPrisma from '../../../libs/LibPrisma'
 //
 export default async function (req, res){
   try{
+    const prisma = LibPrisma.get_client()
 // console.log(req.query );
     var id = req.query.id
     const post = await prisma.task.findUnique({

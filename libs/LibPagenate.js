@@ -40,5 +40,20 @@ export default {
              "page_item": page_item,            
         };
         return  param;       
-    }    
+    },
+    /*********************************
+     * get , 1 page items
+    ***********************************/     
+     get_items: function(items, skip, limit){
+        var ret = []
+        var end = skip + limit;
+    // console.log( start, end )
+        items.forEach(function(item, index){
+            if((index >= skip) && (index < end )){
+                ret.push(item)
+            }
+//console.log( item )
+        });
+        return ret        
+    },        
 }

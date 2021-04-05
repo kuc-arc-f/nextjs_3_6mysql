@@ -15,6 +15,7 @@ export default class Page extends React.Component {
     var url = BASE_URL+ '/api/tasks/list?uid=' + cookies(ctx).user_id
     const res = await fetch(url)
     const json = await res.json()
+
 //console.log(cookies(ctx).user_id)
     return { 
       items: json.items ,user_id :cookies(ctx).user_id,
@@ -22,7 +23,7 @@ export default class Page extends React.Component {
   }
   constructor(props){
     super(props)
-console.log(this.props.items )
+//console.log(this.props.items )
   }  
   componentDidMount(){
 //console.log(this.props.items)
@@ -32,8 +33,8 @@ console.log(this.props.items )
     }    
   }
   render() {
-//    console.log( "user_id=" ,this.props.user_id )
     const items = this.props.items
+// console.log( items )
     return (
     <Layout>
       <div className="container">

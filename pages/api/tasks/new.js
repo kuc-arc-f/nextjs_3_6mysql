@@ -1,14 +1,15 @@
 var csrf = require('csrf');
 var tokens = new csrf();
-import prisma from '../../../libs/prisma'
+import LibPrisma from '../../../libs/LibPrisma'
 import LibConst from '../../../libs/LibConst'
 //
 export default async function (req, res){
   try{
+    const prisma = LibPrisma.get_client()
     var ret_arr = {ret:0, msg:""}
     if (req.method === "POST") {
       var data = req.body
- console.log(data);
+// console.log(data);
       var token =data._token
 //console.log(token)
       var CSRF_SECRET = LibConst.get_config().CSRF_SECRET
@@ -19,7 +20,6 @@ export default async function (req, res){
         data: {
           title: data.title,
           content: data.content,
-//          authorId: 0,
         },
       })      
     }

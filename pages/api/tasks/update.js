@@ -1,10 +1,11 @@
 var csrf = require('csrf');
 var tokens = new csrf();
-import prisma from '../../../libs/prisma'
+import LibPrisma from '../../../libs/LibPrisma'
 import LibConst from '../../../libs/LibConst'
 //
 export default async function (req, res){
   try{
+    const prisma = LibPrisma.get_client()
     var data = req.body
 // console.log(data);
     var id = data.id

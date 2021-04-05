@@ -1,9 +1,10 @@
-const {promisify} = require('util');
-import prisma from '../../../libs/prisma'
+import LibPrisma from '../../../libs/LibPrisma'
+import LibPagenate from '../../../libs/LibPagenate'
 
 //
 export default async function (req, res){
   try{
+    const prisma = LibPrisma.get_client()
     //console.log("uid=", req.query.uid)
     var items = []
     //
@@ -15,8 +16,9 @@ export default async function (req, res){
       ],      
 //      where: { published: true },
     })
+    items = LibPagenate.get_items(posts, 0, 100 )
     var ret ={
-      items: posts
+      items: items
     }   
     await prisma.$disconnect()
     res.json(ret);
