@@ -5,9 +5,9 @@ import cookies from 'next-cookies'
 import Layout from '../../components/layout'
 import LibConst from '../../libs/LibConst'
 //
-function Page(data) {
+function Page(props) {
 //console.log(data.item.created_at )
-  var item = data.item
+  var item = props.item
   return (
   <Layout>
     <div className="container">
@@ -22,7 +22,7 @@ function Page(data) {
   )
 }
 //
-Page.getInitialProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
 console.log(ctx.query.id)
   var BASE_URL = LibConst.get_config().BASE_URL
 // console.log("uid=", cookies(ctx).user_id)
@@ -34,7 +34,9 @@ console.log(ctx.query.id)
   const json = await res.json()
 // console.log(json)
   var item = json.item
-  return { item:item }
+  return {
+    props: { item },
+  }
 }
 
 export default Page
